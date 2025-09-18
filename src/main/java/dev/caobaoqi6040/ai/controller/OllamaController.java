@@ -2,33 +2,34 @@ package dev.caobaoqi6040.ai.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.MimeTypeUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 
 /**
- * OpenAIController
+ * OllamaController
  *
  * @author caobaoqi6040
- * @since 2025/9/18 14:44
+ * @since 2025/9/18 17:42
  */
 @RestController
-@RequestMapping("/api/v1/openai")
-public class OpenAIController {
+@RequestMapping("/api/v1/ollama")
+public class OllamaController {
 
-	private final ChatClient gpt4o;
+	private final ChatClient ollama;
 
-	public OpenAIController(@Qualifier("your-open-api") ChatClient gpt4o) {
-		this.gpt4o = gpt4o;
+	public OllamaController(@Qualifier("ollama") ChatClient ollama) {
+		this.ollama = ollama;
 	}
-
 
 	@GetMapping("/sample-chat")
 	public ResponseEntity<String> sampleChat() {
 
-		String content = gpt4o.prompt()
+		String content = ollama.prompt()
 			.user("向我介绍你自己")
 			.call().content();
 
@@ -38,12 +39,22 @@ public class OpenAIController {
 	@GetMapping("/stream-chat")
 	public ResponseEntity<Flux<String>> streamChat() {
 
-		Flux<String> content = gpt4o.prompt()
+		Flux<String> content = ollama.prompt()
 			.user("向我介绍你自己")
 			.stream().content();
 
 		return ResponseEntity.ok(content);
 	}
 
+	@GetMapping("/image2text")
+	public ResponseEntity<String> image2text() {
 
+		String content = ollama.prompt()
+			.user(spec -> spec
+				.text("介绍图片中的内容")
+				.media(MimeTypeUtils.IMAGE_JPEG, new ClassPathResource("background.jpg"))
+			).call().content();
+
+		return ResponseEntity.ok(content);
+	}
 }

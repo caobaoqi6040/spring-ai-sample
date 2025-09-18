@@ -1,0 +1,8 @@
+### sample-chat
+GET localhost:8080/api/v1/ollama/sample-chat
+
+### stream-chat
+GET localhost:8080/api/v1/ollama/stream-chat
+
+### image2text
+GET localhost:8080/api/v1/ollama/image2text
