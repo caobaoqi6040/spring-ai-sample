@@ -1,0 +1,39 @@
+name: spring-ai-sample
+services:
+  mysql:
+    image: mysql:${MYSQL_IMAGE}
+    restart: "no"
+    ports:
+      - "${MYSQL_PORT}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      TZ: Asia/Shanghai
+      MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+  redis:
+    image: redis:${REDIS_IMAGE}
+    restart: "no"
+    ports:
+      - "${REDIS_PORT}:6379"
+    volumes:
+      - redis_data:/data
+    environment:
+      TZ: Asia/Shanghai
+  minio:
+    image: minio/minio:${MINIO_IMAGE}
+    restart: "no"
+    ports:
+      - "${MINIO_API_PORT}:9000"
+      - "${MINIO_DASHBOARD_PORT}:9090"
+    environment:
+      TZ: Asia/Shanghai
+      MINIO_ACCESS_KEY: ${MINIO_ACCESS_KEY}
+      MINIO_SECRET_KEY: ${MINIO_SECRET_KEY}
+    command: server /data --console-address ":9000" --address ":9090"
+    volumes:
+      - minio_data:/data
+volumes:
+  redis_data:
+  mysql_data:
+  minio_data:

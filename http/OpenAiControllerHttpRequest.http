@@ -1,0 +1,5 @@
+### sample-chat
+GET localhost:8080/api/v1/openai/sample-chat
+
+### stream-chat
+GET localhost:8080/api/v1/openai/stream-chat
