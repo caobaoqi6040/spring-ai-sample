@@ -8,15 +8,15 @@ import org.springframework.context.event.EventListener;
 
 @Slf4j
 @SpringBootApplication
-public class Backend {
+public class BackendApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Backend.class, args);
+		SpringApplication.run(BackendApplication.class, args);
 	}
 
 	@EventListener
 	public void handleApplicationReadyEvent(ApplicationReadyEvent event) {
-		log.info("Backend.handleApplicationReadyEvent {}", event);
+		log.info("BackendApplication.handleApplicationReadyEvent {}", event);
 	}
 
 }

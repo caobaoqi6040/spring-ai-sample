@@ -1,0 +1,8 @@
+### sign-in
+GET localhost:8080/api/v1/auth/sign-in
+Content-Type: application/json
+
+{
+  "email": "caobaoqi6040@gmail.com",
+  "password": "123321qqq"
+}

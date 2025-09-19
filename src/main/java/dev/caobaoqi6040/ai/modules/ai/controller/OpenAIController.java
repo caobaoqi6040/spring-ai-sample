@@ -1,4 +1,4 @@
-package dev.caobaoqi6040.ai.controller;
+package dev.caobaoqi6040.ai.modules.ai.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -18,17 +18,17 @@ import reactor.core.publisher.Flux;
 @RequestMapping("/api/v1/openai")
 public class OpenAIController {
 
-	private final ChatClient gpt4o;
+	private final ChatClient openAi;
 
-	public OpenAIController(@Qualifier("your-open-api") ChatClient gpt4o) {
-		this.gpt4o = gpt4o;
+	public OpenAIController(@Qualifier("open-ai") ChatClient openAi) {
+		this.openAi = openAi;
 	}
 
 
 	@GetMapping("/sample-chat")
 	public ResponseEntity<String> sampleChat() {
 
-		String content = gpt4o.prompt()
+		String content = openAi.prompt()
 			.user("向我介绍你自己")
 			.call().content();
 
@@ -38,7 +38,7 @@ public class OpenAIController {
 	@GetMapping("/stream-chat")
 	public ResponseEntity<Flux<String>> streamChat() {
 
-		Flux<String> content = gpt4o.prompt()
+		Flux<String> content = openAi.prompt()
 			.user("向我介绍你自己")
 			.stream().content();
 
