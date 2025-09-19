@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "pkief.material-icon-theme",
+    "mhutchie.git-graph",
+    "redjue.git-commit-plugin",
+    "wayou.vscode-todo-highlight",
+    "ms-vscode-remote.remote-ssh",
+    "k--kato.intellij-idea-keybindings",
+    "ms-azuretools.vscode-docker",
+    "biomejs.biome"
+  ]
+}

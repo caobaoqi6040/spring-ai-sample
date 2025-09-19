@@ -1,0 +1,18 @@
+{
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "explorer.confirmDelete": false,
+  "editor.fontFamily": "Maple Mono NF CN",
+  "editor.fontSize": 12.6,
+  "terminal.integrated.fontSize": 11.5,
+  "editor.fontWeight": "normal",
+  "window.zoomLevel": 0.65,
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorWidth": 1,
+  "editor.cursorSmoothCaretAnimation": "on",
+  "workbench.colorTheme": "One Dark Pro Darker",
+  "workbench.iconTheme": "material-icon-theme",
+  "GitCommitPlugin.MaxSubjectCharacters": 50,
+  "explorer.fileNesting.enabled": false
+}
