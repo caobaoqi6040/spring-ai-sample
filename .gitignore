@@ -17,6 +17,3 @@ target/
 ### misc ###
 .DS_Store
 *.pem
-
-### VS Code ###
-.vscode/
